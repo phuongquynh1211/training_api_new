@@ -6,9 +6,12 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-// Import từng route riêng biệt
+
 const adminRoutes = require("./routes/admin");
 const userRoutes = require("./routes/user");
+const productRoutes = require("./routes/product");
+const cartRoutes = require("./routes/cart");
+const orderRoutes = require("./routes/order");
 
 // Kết nối MongoDB
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -18,6 +21,9 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 // Sử dụng các route
 app.use("/api/admin", adminRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/cart", cartRoutes);
+app.use("/api/order", orderRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
