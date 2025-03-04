@@ -14,8 +14,6 @@ res.json(user);
 } catch (error) { res.status(500).json({ message: "Server error", error: error.message }); }
 });
 
-
-
 // Lấy danh sách users 
 router.get("/users", async (req, res) => {
 try {
